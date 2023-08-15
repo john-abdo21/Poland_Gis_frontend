@@ -3,6 +3,7 @@ import './App.css';
 
 import NavBar from './components/NavBar';
 import Home from './components/Home';
+import AllDataView from "./components/AllDataView";
 
 import { Container} from 'react-bootstrap';
 
@@ -16,7 +17,7 @@ function App() {
     <Container fluid className="main-container">
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/home" element={<Home />} /> */}
+        <Route path="/allData" element={<AllDataView />} />
       </Routes>
     </Container>
     </div>

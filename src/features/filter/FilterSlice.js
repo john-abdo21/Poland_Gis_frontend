@@ -8,9 +8,9 @@ export const fetchFilter = createAsyncThunk(
   async (filter) => {
     const response = await FilterApi.post("/api/complexSearch",
      {
-      river: filter
+      data: filter
      });
-    //  console.log(response.data);
+     console.log(response.data['lake']);
      return JSON.parse(response.data);
   }
 );
@@ -37,6 +37,7 @@ const fetchSlice = createSlice({
         
       })
       .addCase(fetchFilter.rejected, (state, action) => {
+        console.log('a',action);
         state.loading = false;
         state.error = action.error.message;
       });

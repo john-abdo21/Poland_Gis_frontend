@@ -33,9 +33,10 @@ const getVectorLayer =()=> {
 }
 
 const MapView = () =>{
-  console.log('mapvieew')
+  console.log('mapview')
 
   const searchResult = useSelector((state) => state.filter.searchFilter);  
+  console.log(searchResult)
 
       const mapRef = useRef(null); // ref to store the Map instance
       const vectorLayerRef = useRef(null);      
@@ -132,11 +133,16 @@ const MapView = () =>{
         const vectorSource = mapRef.current.getLayers().getArray()[1].getSource(); // Assuming VectorLayer is at index 1
         vectorSource.clear(); // Clear existing features
         const format = new GeoJSON();
-        const features = format.readFeatures(searchResult, {
-          dataProjection: 'EPSG:4326', // Specify the data projection as EPSG:4326
+        const RiverFeatures = format.readFeatures(searchResult['river'], {
+          dataProjection: 'EPSG:3857', // Specify the data projection as EPSG:4326
           featureProjection: 'EPSG:3857', // Specify the feature projection as EPSG:3857
         });
-        console.log('GeoJSON:', features);
+        const LakeFeatures = format.readFeatures(searchResult['lake'], {
+          dataProjection: "EPSG:3035", // Specify the data projection as EPSG:4326
+          featureProjection: 'EPSG:3857', // Specify the feature projection as EPSG:3857
+        });
+        // const features=searchResult;
+        console.log('GeoJSON:', RiverFeatures,LakeFeatures);
         // Style for points
         const pointStyle = new Style({
           image: new Circle({
@@ -162,16 +168,27 @@ const MapView = () =>{
         // Style for polygons
         const polygonStyle = new Style({
           fill: new Fill({
-            color: 'rgba(0, 255, 0, 0.5)',
+            color: 'rgba(0,255,0,0.2)',
           }),
           stroke: new Stroke({
             color: 'green',
-            width: 2,
+            width: 1,
+          }),
+        });
+
+        // Style for lake polygons
+        const lakepolygonStyle = new Style({
+          fill: new Fill({
+            color: 'rgba(0,0,255,0.2)',
+          }),
+          stroke: new Stroke({
+            color: 'blue',
+            width: 1,
           }),
         });
 
         // Apply styles to the features based on their geometry type
-        features.forEach((feature) => {
+        RiverFeatures.forEach((feature) => {
           const geometryType = feature.getGeometry().getType();
           if (geometryType === 'Point') {
             feature.setStyle(pointStyle);
@@ -181,8 +198,20 @@ const MapView = () =>{
             feature.setStyle(polygonStyle);
           }
         });
+        LakeFeatures.forEach((feature) => {
+          const geometryType = feature.getGeometry().getType();
+          if (geometryType === 'Point') {
+            feature.setStyle(pointStyle);
+          } else if (geometryType === 'LineString' || geometryType === 'MultiLineString') {
+            feature.setStyle(lineStyle);
+          } else if (geometryType === 'Polygon' || geometryType === 'MultiPolygon') {
+            feature.setStyle(lakepolygonStyle);
+          }
+        });
+        // features.setStyle(polygonStyle);
 
-        vectorSource.addFeatures(features); // Add new features        
+        vectorSource.addFeatures(RiverFeatures); // Add new features        
+        vectorSource.addFeatures(LakeFeatures); // Add new features        
       }, [searchResult]);
 
     return(
