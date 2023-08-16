@@ -6,7 +6,7 @@ export const fetchReducer = createAsyncThunk(
   'filter/fetchDatas',
 
   async (filter) => {
-    if (filter['data'] === 'hospital' || filter['data'] === 'station') {
+    if (filter['data'] === 'hospital') {
       const response = await FilterApi.post("/api/requestPoint",
         {
           data: filter
@@ -30,7 +30,7 @@ const initialState = {
   forest: null,
   station: null,
   hospital: null,
-  station: null,
+  land: null,
   loading: false,
   error: null,
   riverView: false,
@@ -73,6 +73,8 @@ const fetchDatas = createSlice({
           state.forest = action.payload['val'];
         else if (action.payload['key'] === 'hospital')
           state.hospital = action.payload['val'];
+        else if (action.payload['key'] === 'P')
+          state.land = action.payload['val'];
       })
       .addCase(fetchReducer.rejected, (state, action) => {
         state.loading = false;

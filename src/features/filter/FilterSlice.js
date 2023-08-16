@@ -10,7 +10,7 @@ export const fetchFilter = createAsyncThunk(
      {
       data: filter
      });
-     console.log(response.data['lake']);
+     console.log(response.data);
      return JSON.parse(response.data);
   }
 );

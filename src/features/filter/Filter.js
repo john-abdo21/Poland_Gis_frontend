@@ -90,25 +90,25 @@ const GeoFilter = () => {
               </Form.Item>
             </Col>
             <Col xs={7}>
-          <Form.Item label="Distance" name="R_Distance" rules={[{required: false, message: 'Empty!',},]}>
-            <Input type = 'number' placeholder="0.0" suffix={'m'}/>
-          </Form.Item>
-        </Col>
+              <Form.Item label="Distance" name="R_Distance" rules={[{ required: false, message: 'Empty!', },]}>
+                <Input type='number' placeholder="0.0" suffix={'m'} />
+              </Form.Item>
+            </Col>
           </Row>
-          <Divider style={{marginTop: 3, marginBottom: 3}} orientation="left" plain> Lake </Divider>
+          {/* <Divider style={{ marginTop: 3, marginBottom: 3 }} orientation="left" plain> Lake </Divider>
 
           <Row gutter={[6]}>
-        <Col xs={7}>
-          <Form.Item label="Square" name="L_Area" rules={[{required: true, message: 'Empty!',},]}>
-            <Input type = 'number' placeholder="0.0" suffix={'m^2'}/>
-          </Form.Item>
-        </Col>
-        <Col xs={7}>
-          <Form.Item label="Distance" name="L_Distance" rules={[{required: false, message: 'Empty!',},]}>
-            <Input type = 'number' placeholder="0.0" suffix={'m'}/>
-          </Form.Item>
-        </Col>
-      </Row>
+            <Col xs={7}>
+              <Form.Item label="Square" name="L_Area" rules={[{ required: true, message: 'Empty!', },]}>
+                <Input type='number' placeholder="0.0" suffix={'m^2'} />
+              </Form.Item>
+            </Col>
+            <Col xs={7}>
+              <Form.Item label="Distance" name="L_Distance" rules={[{ required: false, message: 'Empty!', },]}>
+                <Input type='number' placeholder="0.0" suffix={'m'} />
+              </Form.Item>
+            </Col>
+          </Row> */}
           <Form.Item style={{ marginRight: '15px' }}>
             <Row justify="end">
               <Col>

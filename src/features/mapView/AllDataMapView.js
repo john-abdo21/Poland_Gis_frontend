@@ -9,7 +9,7 @@ import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
 
-import { useEffect,useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const getVectorLayer = () => {
   const vectorSource = new VectorSource({
@@ -32,6 +32,7 @@ const MapView = () => {
   const ReverData = useSelector((state) => state.data.river);
   const LakeData = useSelector((state) => state.data.lake);
   const ForestData = useSelector((state) => state.data.forest);
+  const LandData = useSelector((state) => state.data.land);
   const HospitalData = useSelector((state) => state.data.hospital);
   console.log('R', ReverData)
   console.log('L', LakeData)
@@ -107,6 +108,15 @@ const MapView = () => {
     }),
     stroke: new Stroke({
       color: '#62db30',
+      width: 1,
+    }),
+  });
+  const landpolygonStyle = new Style({
+    fill: new Fill({
+      color: '#c58734',
+    }),
+    stroke: new Stroke({
+      color: '#c58734',
       width: 1,
     }),
   });
@@ -207,6 +217,44 @@ const MapView = () => {
     });
     vectorSource.addFeatures(ForestFeatures);
   }, [ForestData]);
+
+  useEffect(() => {
+    console.log('LandData')
+    if (!LandData) return;
+    const start_time = new Date();
+    const end_time = new Date();
+    console.log(`${end_time - start_time} ms`);
+    console.log(LandData)
+    const format = new GeoJSON();
+    const vectorSource = mapRef.current.getLayers().getArray()[1].getSource(); // Assuming VectorLayer is at index 1
+    // vectorSource.clear();
+
+    const LandFeatures = format.readFeatures(LandData, {
+      dataProjection: 'EPSG:3035', // Specify the data projection as EPSG:4326
+      featureProjection: 'EPSG:3857', // Specify the feature projection as EPSG:3857
+    });
+    // Apply styles to the features based on their geometry type
+    LandFeatures.forEach((feature) => {
+      const geometryType = feature.getGeometry().getType();
+      if (geometryType === 'Point') {
+        feature.setStyle(pointStyle);
+      } else if (geometryType === 'LineString' || geometryType === 'MultiLineString') {
+        feature.setStyle(lineStyle);
+      } else if (geometryType === 'Polygon' || geometryType === 'MultiPolygon') {
+        feature.setStyle(landpolygonStyle);
+      }
+    });
+    // if (vectorSource !== null) {
+    //   var allFeatures = vectorSource.getFeatures();
+    //   var isRExist = allFeatures.some(function (feature) {
+    //     // Compare each feature with R
+    //     return LandFeatures.includes(feature);
+    //   });
+    //   if (vectorSource && isRExist)
+    //     vectorSource.removeFeatures(LandFeatures);
+    // }
+    vectorSource.addFeatures(LandFeatures);
+  }, [LandData]);
 
   useEffect(() => {
     console.log('HospitalData')

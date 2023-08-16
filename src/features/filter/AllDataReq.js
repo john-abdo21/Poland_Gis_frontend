@@ -46,8 +46,9 @@ const AllDataReq = () => {
         console.log(e)
         dispatch(fetchReducer(e));
     };
-    const GetStationData = () => {
-        dispatch(fetchReducer({data:'station'}));
+    const GetLandData = (e) => {
+        console.log(e)
+        dispatch(fetchReducer(e));
     };
     const GetHospitalData = () => {
         dispatch(fetchReducer({data:'hospital'}));
@@ -169,11 +170,38 @@ const AllDataReq = () => {
                         </Col>
                     </Row>
                 </Form>
+                {/* Land */}
+                <Divider style={{ marginTop: 3, marginBottom: 3 }} orientation="left" plain> Land </Divider>
+                <Form layout="vertical" onFinish={GetLandData}>
+                    <Row gutter={[6]} align='bottom'>
+                        <Col xs={8}>
+                            <Form.Item label="Square(min)" name="P_Area_min" rules={[{ required: true, message: 'Empty!', },]}>
+                                <Input type='number' placeholder="0.0" suffix={'m^2'} />
+                            </Form.Item>
+                        </Col>
+                        <Col xs={8}>
+                            <Form.Item label="Square(max)" name="P_Area_max" rules={[{ required: false, message: 'Empty!', },]}>
+                                <Input type='number' placeholder="0.0" suffix={'m^2'} />
+                            </Form.Item>
+                        </Col>
+                        <Col xs={8}>
+                            <Form.Item style={{ marginRight: '15px' }}>
+                                <Row justify="end">
+                                    <Col>
+                                        <Button type="primary" htmlType="submit">
+                                            REQUEST
+                                        </Button>
+                                    </Col>
+                                </Row>
+                            </Form.Item>
+                        </Col>
+                    </Row>
+                </Form>
                 {/* Station */}
                 <Divider style={{ marginTop: 3, marginBottom: 3 }} orientation="center" plain> Station , Hospital</Divider>
                 <Row gutter={[6]} align='bottom'>
                     <Col xs={8}>
-                        <Button onClick={GetStationData} type="primary">STATION REQUEST</Button>
+                        <Button onClick={GetHospitalData} type="primary">STATION REQUEST</Button>
                     </Col>
                     <Col xs={6}>
                         {/* <Button onClick={GetStationData} type="primary">STATION REQUEST</Button> */}
