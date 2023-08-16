@@ -1,24 +1,25 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
 import MapView from "../features/mapView/MapView";
-import GeoFilter from '../features/filter/Filter';
-import CustomQueryBuilder from '../features/filter/CustomQueryBuilder';
-import MyBuilder from '../features/filter/Filter_Complex';
-import MyQueryBuilder from '../features/filter/QueryBuilder';
-
-import { Col, Row } from "antd";
+import App from './setting'
+import { useSelector } from 'react-redux';
+import { Button, Row } from 'antd';
+import { DownloadOutlined } from '@ant-design/icons';
+import { toggleView1 } from "../features/filter/StateReducer";
 const Home = () => {
-  console.log('home')
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.filter.loading, []);
+  const setView1 = () => {
+    dispatch(toggleView1());
+  };
   return (
-    <Row style={{ height: "100%" }}>
-      <Col xs={8}>
-        {/* <MyQueryBuilder /> */}
-        <GeoFilter />
-      </Col>
-      <Col xs={16}>
-        <MapView />
-      </Col>
+    <Row style={{ height: "100%", width: '100%' }}>
+      <Button type="primary" onClick={setView1} icon={<DownloadOutlined /> } loading={loading} className='setting_btn'>
+       {loading?'Loading...':'DefineData'}
+      </Button>
+      <App />
+      <MapView />
     </Row>
   );
 };
-
 export default Home;

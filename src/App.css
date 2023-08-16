@@ -1,15 +1,15 @@
 .App {
   display: flex;
   flex-direction: column;
-  /* height: 100vh;
-  width: 100vw; */
+  height: 100vh;
+  width: 100vw;
 }
 .main-container {
   height: 100%;
+  width: 100%;
 }
 .content {
   flex-grow: 1;
-  overflow: auto;
 }
 .main-layout {
   display: flex;
@@ -45,4 +45,27 @@
 .map {
   width: 100%;
   height: 100%;
+}
+.setting_btn{
+  position: fixed;
+  top: 10vh;
+  left: 50px;
+  z-index: 10;
+}
+
+.text-center{
+  align-content: center;
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  --bs-gutter-x: 0px!important;
+}
+
+:where(.css-dev-only-do-not-override-1wazalj).ant-spin-nested-loading >div>.ant-spin .ant-spin-dot {
+  position: absolute;
+  top: 60%;
+}
+
+.mynabar{
+ padding-left: 20px;
+ z-index: 10001;
 }

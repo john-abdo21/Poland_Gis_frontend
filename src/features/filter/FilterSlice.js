@@ -1,7 +1,6 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { FilterApi } from '../../app/FetchAPI';
-
 export const fetchFilter = createAsyncThunk(
   'filter/fetchFilter',
 

@@ -1,18 +1,23 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import AllDataMapView from "../features/mapView/AllDataMapView";
-import AllDataReq from '../features/filter/AllDataReq';
-
-import { Col, Row } from "antd";
+import { DownloadOutlined } from '@ant-design/icons';
+import { toggleView2 } from "../features/filter/StateReducer";
+import App from './setting'
+import { Button, Row } from "antd";
 const Datas = () => {
-  console.log('alldatas')
+  const loading = useSelector((state) => state.data.loading, []);
+  const dispatch = useDispatch();
+  const setView1 = () => {
+    dispatch(toggleView2());
+  };
   return (
     <Row style={{ height: "100%" }}>
-      <Col xs={8}>
-        <AllDataReq />
-      </Col>
-      <Col xs={16}>
-        <AllDataMapView />
-      </Col>
+      <Button type="primary" onClick={setView1} icon={<DownloadOutlined />}  loading={loading}  className='setting_btn'>
+        {loading?'Loading...':'SelectData'}
+      </Button>
+      <App />
+      <AllDataMapView />
     </Row>
   );
 };

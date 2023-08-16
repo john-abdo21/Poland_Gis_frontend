@@ -1,45 +1,31 @@
-import React from "react";
-
-
+import React,{useState} from "react";
 import { Link } from 'react-router-dom';
-
+import {Menu} from 'antd'
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// const { Header} = Layout;
+import {  SettingOutlined, SelectOutlined } from '@ant-design/icons';
 const NavBar = () => {
+  const [current, setCurrent] = useState('define');
+  
+  const items = [
+    {
+      label: <Link to={"/"} className="navbar-brand ">Navigation One</Link>,
+      key: 'define',
+      icon: <SettingOutlined />,
+    },
+    {
+      label:  <Link to={"allData"} className="navbar-brand ">Navigation One</Link>,
+      key: 'select',
+      icon: <SelectOutlined />
+    },
+  ];
+  const onClick = (e) => {
+    console.log('click ', e);
+    setCurrent(e.key);
+  };
   return (
-    <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/"} className="navbar-brand">
-          logo
-        </Link>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"allData"} className="nav-link">
-              Home
-            </Link>
-          </li>
-        </div>
-      </nav>
-
-    // <Header
-    //     style={{
-    //       display: 'flex',
-    //       alignItems: 'center',
-    //     }}
-    //   >
-
-    // <div className="demo-logo" />
-    //     <Menu
-    //       theme="dark"
-    //       mode="horizontal"
-    //       defaultSelectedKeys={['1']}          
-    //     >
-    //         <Menu.Item key = "1">Home </Menu.Item>
-    //         <Menu.Item key = "2">About </Menu.Item>
-    //     </Menu>
-
-    //   </Header>
-
+    <>
+      <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} className="mynabar" theme="dark"/>
+    </>
   );
 };
 

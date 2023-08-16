@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import filterReducer from '../features/filter/FilterSlice';
 import dataReqReducer from '../features/filter/DataReducer';
+import stateReqReducer from '../features/filter/StateReducer';
 
 
 export const store = configureStore({
   reducer: {
     filter: filterReducer,
-    data:dataReqReducer
+    data:dataReqReducer,
+    rootdata:stateReqReducer
   },
 });
 
