@@ -3,21 +3,21 @@ import 'ol/ol.css';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
-import ScaleLine from 'ol/control/ScaleLine';
-import Zoom from 'ol/control/Zoom';
+// import ScaleLine from 'ol/control/ScaleLine';
+// import Zoom from 'ol/control/Zoom';
 
 import OSM from 'ol/source/OSM'; //for osm 
-import XYZ from 'ol/source/XYZ'; // for googlemap
+// import XYZ from 'ol/source/XYZ'; // for googlemap
 
-import { Cluster } from 'ol/source'; // improve render of features
+// import { Cluster } from 'ol/source'; // improve render of features
 import { Style, Fill, Stroke, Circle } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
-const apiKey = 'AIzaSyCQ37FgmzxObFYgNt0-bkmlHTVK0TSSFnU';
+// const apiKey = 'AIzaSyCQ37FgmzxObFYgNt0-bkmlHTVK0TSSFnU';
 
 const getVectorLayer =()=> {
   // const format = new GeoJSON();
@@ -39,7 +39,7 @@ const MapView = () =>{
   console.log(searchResult)
 
       const mapRef = useRef(null); // ref to store the Map instance
-      const vectorLayerRef = useRef(null);      
+      // const vectorLayerRef = useRef(null);      
       //openlayer map show when components mounted
       useEffect(()=>{
         const map = new Map({
@@ -69,62 +69,62 @@ const MapView = () =>{
       useEffect(() =>{
         if (!searchResult) return;
         const start_time = new Date();       
-        const geojson = {
-          "type": "FeatureCollection",
-          'crs': {
-            'type': 'name',
-            'properties': {
-              'name': 'EPSG:3857',
-            },
-          },
-          "features": [
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "Point",
-                "coordinates": [102.0, 0.5]
-              },
-              "properties": {
-                "prop0": "value0"
-              }
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "LineString",
-                "coordinates": [
-                  [102.0, 0.0],
-                  [103.0, 1.0],
-                  [104.0, 0.0],
-                  [105.0, 1.0]
-                ]
-              },
-              "properties": {
-                "prop0": "value0",
-                "prop1": 0.0
-              }
-            },
-            {
-              "type": "Feature",
-              "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                  [
-                    [100.0, 0.0],
-                    [101.0, 0.0],
-                    [101.0, 1.0],
-                    [100.0, 1.0],
-                    [100.0, 0.0]
-                  ]
-                ]
-              },
-              "properties": {
-                "prop0": "value0",
-                "prop1": { "this": "that" }
-              }
-            }
-          ]
-        };
+        // const geojson = {
+        //   "type": "FeatureCollection",
+        //   'crs': {
+        //     'type': 'name',
+        //     'properties': {
+        //       'name': 'EPSG:3857',
+        //     },
+        //   },
+        //   "features": [
+        //     {
+        //       "type": "Feature",
+        //       "geometry": {
+        //         "type": "Point",
+        //         "coordinates": [102.0, 0.5]
+        //       },
+        //       "properties": {
+        //         "prop0": "value0"
+        //       }
+        //     },
+        //     {
+        //       "type": "Feature",
+        //       "geometry": {
+        //         "type": "LineString",
+        //         "coordinates": [
+        //           [102.0, 0.0],
+        //           [103.0, 1.0],
+        //           [104.0, 0.0],
+        //           [105.0, 1.0]
+        //         ]
+        //       },
+        //       "properties": {
+        //         "prop0": "value0",
+        //         "prop1": 0.0
+        //       }
+        //     },
+        //     {
+        //       "type": "Feature",
+        //       "geometry": {
+        //         "type": "Polygon",
+        //         "coordinates": [
+        //           [
+        //             [100.0, 0.0],
+        //             [101.0, 0.0],
+        //             [101.0, 1.0],
+        //             [100.0, 1.0],
+        //             [100.0, 0.0]
+        //           ]
+        //         ]
+        //       },
+        //       "properties": {
+        //         "prop0": "value0",
+        //         "prop1": { "this": "that" }
+        //       }
+        //     }
+        //   ]
+        // };
         const end_time = new Date();
         console.log(`${end_time - start_time} ms`);
         console.log(searchResult)

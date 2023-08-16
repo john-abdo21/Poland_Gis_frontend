@@ -3,21 +3,13 @@ import 'ol/ol.css';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import TileLayer from 'ol/layer/Tile';
-import ScaleLine from 'ol/control/ScaleLine';
-import Zoom from 'ol/control/Zoom';
-
 import OSM from 'ol/source/OSM'; //for osm 
-import XYZ from 'ol/source/XYZ'; // for googlemap
-
-import { Cluster } from 'ol/source'; // improve render of features
 import { Style, Fill, Stroke, Circle } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import VectorLayer from 'ol/layer/Vector';
 import GeoJSON from 'ol/format/GeoJSON';
 
-import { useEffect, useState, useRef } from 'react';
-
-const apiKey = 'AIzaSyCQ37FgmzxObFYgNt0-bkmlHTVK0TSSFnU';
+import { useEffect,useRef } from 'react';
 
 const getVectorLayer = () => {
   const vectorSource = new VectorSource({
@@ -32,10 +24,10 @@ const getVectorLayer = () => {
 
 const MapView = () => {
   console.log('allMap')
-  const riverView = useSelector((state) => state.data.riverView);
-  const lakeView = useSelector((state) => state.data.lakeView);
-  const forestView = useSelector((state) => state.data.forestView);
-  const stationView = useSelector((state) => state.data.stationView);
+  // const riverView = useSelector((state) => state.data.riverView);
+  // const lakeView = useSelector((state) => state.data.lakeView);
+  // const forestView = useSelector((state) => state.data.forestView);
+  // const stationView = useSelector((state) => state.data.stationView);
 
   const ReverData = useSelector((state) => state.data.river);
   const LakeData = useSelector((state) => state.data.lake);
@@ -45,7 +37,6 @@ const MapView = () => {
   console.log('L', LakeData)
 
   const mapRef = useRef(null); // ref to store the Map instance
-  const vectorLayerRef = useRef(null);
   //openlayer map show when components mounted
   useEffect(() => {
     const map = new Map({
