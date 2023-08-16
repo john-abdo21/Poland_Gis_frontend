@@ -1,17 +1,16 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input, Button, Row, Col, Divider} from "antd";
 import '../../app/constants';
-
 import { fetchFilter } from "./FilterSlice";
-
+import { hide} from "../filter/StateReducer";
 import "./filter.module.css";
-
 const GeoFilter = () => {
   console.log('GeoFilter rendered');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     dispatch(fetchFilter(e));
+    dispatch(hide());
   };
   const loading = useSelector((state) => state.filter.loading, []);
   return (
@@ -60,8 +59,7 @@ const GeoFilter = () => {
           </Form.Item>
           <Divider />
         </Form>
-{/* 
-        {loading && <Spin className="spinner" />} */}
+{/*   {loading && <Spin className="spinner" />} */}
       </div>
 
     </div>

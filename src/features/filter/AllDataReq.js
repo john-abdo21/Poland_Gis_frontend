@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Form, Input, Button, Row, Col, Divider, Spin, Space, Checkbox } from "antd";
 import '../../app/constants';
 import { fetchReducer, toggleRiverView, toggleLakeView, toggleForestView, toggleStationView } from "./DataReducer";
-
+import { hide } from "../filter/StateReducer";
 import "./filter.module.css";
 
 const AllDataReq = () => {
@@ -41,17 +41,21 @@ const AllDataReq = () => {
     const GetRiverData = (e) => {
         console.log(e)
         dispatch(fetchReducer(e));
+        dispatch(hide());
     };
     const GetLakeData = (e) => {
         console.log(e)
         dispatch(fetchReducer(e));
+        dispatch(hide());
     };
     const GetLandData = (e) => {
         console.log(e)
         dispatch(fetchReducer(e));
+        dispatch(hide());
     };
     const GetHospitalData = () => {
-        dispatch(fetchReducer({data:'hospital'}));
+        dispatch(fetchReducer({ data: 'hospital' }));
+        dispatch(hide());
     };
     useEffect(() => {
         if (riverData)

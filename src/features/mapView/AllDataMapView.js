@@ -145,7 +145,7 @@ const MapView = () => {
     vectorSource.clear();
     const format = new GeoJSON();
     const RiverFeatures = format.readFeatures(ReverData, {
-      dataProjection: 'EPSG:4326', // Specify the data projection as EPSG:4326
+      dataProjection: 'EPSG:3857', // Specify the data projection as EPSG:4326
       featureProjection: 'EPSG:3857', // Specify the feature projection as EPSG:3857
     });
     // Apply styles to the features based on their geometry type

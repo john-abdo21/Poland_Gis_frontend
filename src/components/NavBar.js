@@ -8,12 +8,12 @@ const NavBar = () => {
   
   const items = [
     {
-      label: <Link to={"/"} className="navbar-brand ">Navigation One</Link>,
+      label: <Link to={"/"} className="navbar-brand ">Method One</Link>,
       key: 'define',
       icon: <SettingOutlined />,
     },
     {
-      label:  <Link to={"allData"} className="navbar-brand ">Navigation One</Link>,
+      label:  <Link to={"allData"} className="navbar-brand ">Method Two</Link>,
       key: 'select',
       icon: <SelectOutlined />
     },
