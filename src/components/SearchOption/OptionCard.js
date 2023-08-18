@@ -24,6 +24,10 @@ const OptionCard = () => {
   };
   const loading = useSelector(state => state.filter.loading, []);
   const options = useSelector(state => state.options, [])
+  const isLand = options.toSearch.isLand
+  const isForest = options.toSearch.isForest
+  const isRiver = options.toSearch.isRiver
+  const isLake = options.toSearch.isLake
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -39,23 +43,28 @@ const OptionCard = () => {
   const items = [
     {
       key: '1',
-      label: 'Land',
+      label: false ? 'Land' : 'Land (Unset)',
       children: <LandOptions />,
     },
     {
       key: '2',
-      label: 'Forest',
+      label: false ? 'Forest' : 'Forest (Unset)',
       children: <ForestOptions />,
     },
     {
       key: '3',
-      label: 'River',
+      label: options.options.river.distance.isSet ? 'River' : 'River (Unset)',
       children: <RiverOptions />,
     },
     {
       key: '4',
-      label: 'Lake',
+      label: false ? 'Lake' : 'Lake (Unset)',
       children: <LakeOptions />,
+    },
+    {
+      key: '5',
+      label: false ? 'Other' : 'Other (Unset)',
+      children: 'Other Options Goes Here...',
     },
   ]
 
@@ -86,8 +95,8 @@ const OptionCard = () => {
             <ItemsToSearch />
           </Row>
           
-          <Divider orientation="left" plain> <span><h5>Select more options below</h5></span> </Divider>
-          <Collapse items={items} bordered={false} />
+          {(isLand || isForest || isRiver || isLake) && <Divider orientation="left" plain> <span><h5>Select more options below</h5></span> </Divider>}
+          {(isLand || isForest || isRiver || isLake) && <Collapse items={items} bordered={false} />}
 
 
           {/* <Divider orientation="left" plain> What are you going to search? </Divider>

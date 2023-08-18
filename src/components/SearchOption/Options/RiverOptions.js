@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Modal, Form, Input, Button, Row, Col, Divider, Collapse, Checkbox, Select } from 'antd'
 import customLabel from '../../../features/utils/CustomLabel'
@@ -55,7 +55,7 @@ const RiverOptions = () => {
             >
                 <Row gutter={[6]}>
                     <Col xs={6}>
-                        <Checkbox onChange={onChangeDistance}>Distance</Checkbox>
+                        <Checkbox onChange={onChangeDistance}>Enable</Checkbox>
                     </Col>
                     <Col xs={18}>
                         <Row gutter={[6]}>
