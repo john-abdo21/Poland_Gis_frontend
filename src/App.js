@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import AllDataView from "./components/AllDataView";
+import OptionCard from './components/SearchOption/OptionCard'
 
 import { Container} from 'react-bootstrap';
 
@@ -15,6 +16,7 @@ function App() {
     <NavBar />
     <div className="content">
     <Container fluid className="main-container">
+      <OptionCard />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/allData" element={<AllDataView />} />

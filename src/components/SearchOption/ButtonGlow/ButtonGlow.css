@@ -5,58 +5,64 @@ body {
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  
-  * {
+}
+
+* {
     box-sizing: border-box;
     -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-  }
-  
-  .option_area {
+    backface-visibility: hidden;
+}
+
+.option_area {
     position: absolute;
     top: 15%;
-    left: 100px;
+    right: 10%;
     margin-top: -15px;
     margin-left: -15px;
-  }
-  
-  .option_toggle {
+}
+
+.option_toggle {
     display: block;
     position: relative;
     background: #FCFCFC;
     border: none;
     width: 44px;
     height: 44px;
-    line-height: 44px;
+    line-height: 34px;
     text-align: center;
     border-radius: 100%;
     cursor: pointer;
-    border: 4px solid rgba(255, 255, 255, 0.3);
+    border: 4px solid #00a6e533;
     transition: all 0.2s ease;
     z-index: 4;
     outline: none;
-  }
-  .option_toggle:hover {
+}
+
+.option_toggle:hover {
     transform: scale(0.8);
-  }
-  .option_toggle.active {
+}
+
+.option_toggle.active {
     transform: none;
     border: 4px solid #0ADACD;
-  }
-  .option_toggle.active .option_icon {
+}
+
+.option_toggle.active .option_icon {
     transform: rotate(315deg);
-  }
-  .option_toggle.active ~ .option_card {
+}
+
+.option_toggle.active~.option_card {
     opacity: 1;
     transform: rotate(0);
-  }
-  .option_toggle.active ~ .option_card h1, .option_toggle.active ~ .option_card p {
+}
+
+.option_toggle.active~.option_card h1,
+.option_toggle.active~.option_card p {
     opacity: 1;
     transform: translateY(0);
-  }
-  
-  .option_bubble {
+}
+
+.option_bubble {
     position: absolute;
     border: none;
     width: 40px;
@@ -67,8 +73,9 @@ body {
     z-index: 1;
     top: 2px;
     left: 2px;
-  }
-  .option_bubble:before {
+}
+
+.option_bubble:before {
     content: "";
     position: absolute;
     width: 120px;
@@ -77,11 +84,12 @@ body {
     border-radius: 100%;
     top: -40px;
     left: -40px;
-    background: #8ED6D1;
+    background: #ff000055;
     -webkit-animation: bubble 3s ease-out infinite;
-            animation: bubble 3s ease-out infinite;
-  }
-  .option_bubble:after {
+    animation: bubble 3s ease-out infinite;
+}
+
+.option_bubble:after {
     content: "";
     position: absolute;
     width: 120px;
@@ -91,58 +99,64 @@ body {
     top: -40px;
     left: -40px;
     z-index: 1;
-    background: #8ED6D1;
+    background: #ff000055;
     -webkit-animation: bubble 3s 0.8s ease-out infinite;
-            animation: bubble 3s 0.8s ease-out infinite;
-  }
-  
-  .option_icon {
+    animation: bubble 3s 0.8s ease-out infinite;
+}
+
+.option_icon {
     display: inline-block;
     position: relative;
-    width: 16px;
-    height: 16px;
+    width: 30px;
+    height: 30px;
     z-index: 5;
     transition: all 0.3s ease-out;
-  }
-  .option_icon .option_horizontal {
+}
+
+.option_icon .option_horizontal {
     position: absolute;
     width: 100%;
     height: 4px;
     background: linear-gradient(-134deg, #6DCD42 0%, #0ADACD 100%);
     top: 50%;
     margin-top: -2px;
-  }
-  .option_icon .option_vertical {
+}
+
+.option_icon .option_vertical {
     position: absolute;
     width: 4px;
     height: 100%;
     left: 50%;
     margin-left: -2px;
     background: linear-gradient(-134deg, #6DCD42 0%, #0ADACD 100%);
-  }
-  
-  @-webkit-keyframes bubble {
+}
+
+@-webkit-keyframes bubble {
     0% {
-      opacity: 0;
-      transform: scale(0);
+        opacity: 0;
+        transform: scale(0);
     }
+
     5% {
-      opacity: 1;
+        opacity: 1;
     }
+
     100% {
-      opacity: 0;
+        opacity: 0;
     }
-  }
-  
-  @keyframes bubble {
+}
+
+@keyframes bubble {
     0% {
-      opacity: 0;
-      transform: scale(0);
+        opacity: 0;
+        transform: scale(0);
     }
+
     5% {
-      opacity: 1;
+        opacity: 1;
     }
+
     100% {
-      opacity: 0;
+        opacity: 0;
     }
-  }
+}
