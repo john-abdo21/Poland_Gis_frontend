@@ -14,15 +14,16 @@ import RiverOptions from './Options/RiverOptions';
 import LakeOptions from './Options/LakeOptions';
 
 
-const OptionCard = () => {
-  const dispatch = useDispatch();
 
+const OptionCard = () => {
+
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     dispatch(fetchFilter(e));
     dispatch(hide());
   };
-
-  const loading = useSelector((state) => state.filter.loading, []);
+  const loading = useSelector(state => state.filter.loading, []);
+  const options = useSelector(state => state.options, [])
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -39,22 +40,22 @@ const OptionCard = () => {
     {
       key: '1',
       label: 'Land',
-      children: LandOptions,
+      children: <LandOptions />,
     },
     {
       key: '2',
       label: 'Forest',
-      children: ForestOptions,
+      children: <ForestOptions />,
     },
     {
       key: '3',
       label: 'River',
-      children: RiverOptions,
+      children: <RiverOptions />,
     },
     {
       key: '4',
       label: 'Lake',
-      children: LakeOptions,
+      children: <LakeOptions />,
     },
   ]
 
@@ -80,12 +81,12 @@ const OptionCard = () => {
         ]}
       >
         <Form layout="vertical" onFinish={handleSubmit}>
-          <Divider plain> <span><h5>What are you going to search?</h5></span> </Divider>
+          <Divider orientation="left" plain> <span><h5>What are you going to search?</h5></span> </Divider>
           <Row justify="center">
             <ItemsToSearch />
           </Row>
           
-          <Divider plain> <span><h5>Options</h5></span> </Divider>
+          <Divider orientation="left" plain> <span><h5>Select more options below</h5></span> </Divider>
           <Collapse items={items} bordered={false} />
 
 

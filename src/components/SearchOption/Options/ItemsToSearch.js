@@ -1,19 +1,36 @@
 import React, { useState } from 'react'
 import { Checkbox } from 'antd'
 import { useSelector, useDispatch } from 'react-redux';
-
-
-const onChange = (e) => {
-    console.log(`checked = ${e.target.checked}`);
-};
+import {
+    setIsLand,
+    setIsForest,
+    setIsRiver,
+    setIsLake,
+} from '../../../features/filter/OptionReducer'
 
 const ItemsToSearch = () => {
+    const options = useSelector(state => state.options, [])
+    const dispatch = useDispatch();
+
+    const onChangeLand = (e) => {
+        dispatch(setIsLand(e.target.checked));
+    };
+    const onChangeForest = (e) => {
+        dispatch(setIsForest(e.target.checked));
+    };
+    const onChangeRiver = (e) => {
+        dispatch(setIsRiver(e.target.checked));
+    };
+    const onChangeLake = (e) => {
+        dispatch(setIsLake(e.target.checked));
+    };
+
     return (
         <>
-            <Checkbox onChange={onChange}>Land</Checkbox>
-            <Checkbox onChange={onChange}>Forest</Checkbox>
-            <Checkbox onChange={onChange}>River</Checkbox>
-            <Checkbox onChange={onChange}>Lake</Checkbox>
+            <Checkbox onChange={onChangeLand} checked={options.toSearch.isLand}>Land</Checkbox>
+            <Checkbox onChange={onChangeForest} checked={options.toSearch.isForest}>Forest</Checkbox>
+            <Checkbox onChange={onChangeRiver} checked={options.toSearch.isRiver}>River</Checkbox>
+            <Checkbox onChange={onChangeLake} checked={options.toSearch.isLake}>Lake</Checkbox>
         </>
     );
 }
