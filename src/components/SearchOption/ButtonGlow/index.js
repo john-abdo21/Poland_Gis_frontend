@@ -14,7 +14,11 @@ const ButtonGlow = ({ onClick }) => {
                 <div className="option_icon">
                     {/* <div className="option_horizontal"></div>
                     <div className="option_vertical"></div> */}
-                    <SearchOutlined style={{fontSize: '26px', color: '#0ADACD'}}/>
+                    <SearchOutlined
+                        style={{
+                            fontSize: '26px',
+                            color: '#0ADACD',
+                        }}/>
                 </div>
             </div>
             <div className="option_bubble"></div>
