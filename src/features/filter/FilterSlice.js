@@ -6,11 +6,11 @@ export const fetchFilter = createAsyncThunk(
 
   async (filter) => {
     const response = await FilterApi.post("/api/complexSearch",
-     {
-      data: filter
-     });
-     console.log(response.data);
-     return JSON.parse(response.data);
+      {
+        data: filter
+      });
+    console.log(response.data);
+    return JSON.parse(response.data);
   }
 );
 
@@ -33,10 +33,10 @@ const fetchSlice = createSlice({
       .addCase(fetchFilter.fulfilled, (state, action) => {
         state.loading = false;
         state.searchFilter = action.payload;
-        
+
       })
       .addCase(fetchFilter.rejected, (state, action) => {
-        console.log('a',action);
+        console.log('a', action);
         state.loading = false;
         state.error = action.error.message;
       });
