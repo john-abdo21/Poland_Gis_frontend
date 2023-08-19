@@ -110,7 +110,7 @@ const RiverOptions = () => {
                         </Row>
                     </Col>
                 </Row>
-                <Row gutter={[6]}>
+                {/* <Row gutter={[6]}>
                     <Col xs={6}>
                         <Checkbox onChange={onChangeName} disabled={!enabled}>Name</Checkbox>
                     </Col>
@@ -151,7 +151,7 @@ const RiverOptions = () => {
                             </Col>
                         </Row>
                     </Col>
-                </Row>
+                </Row> */}
             </p>
         </>
     )
