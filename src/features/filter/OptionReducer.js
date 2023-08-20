@@ -19,6 +19,7 @@ const initialState = {
         isForest: false,
         isRiver: false,
         isLake: false,
+        isOther: false,
     },
     options: {
         land: {},
@@ -84,6 +85,9 @@ const optionReducer = createSlice({
         setIsLake: (state, action) => {
             state.toSearch.isLake = action.payload;
         },
+        setIsOther: (state, action) => {
+            state.toSearch.isOther = action.payload;
+        },
         setIsRiverDistance: (state, action) => {
             state.options.river.distance.isSet = action.payload;
         },
@@ -112,6 +116,7 @@ export const {
     setIsForest,
     setIsRiver,
     setIsLake,
+    setIsOther,
     setIsRiverDistance,
     setIsMinRiverDistance,
     setIsRiverLength,

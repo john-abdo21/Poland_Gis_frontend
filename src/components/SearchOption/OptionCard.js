@@ -19,7 +19,7 @@ const OptionCard = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
-    dispatch(fetchFilter(e));
+    dispatch(fetchFilter(options));
     dispatch(hide());
   };
   const loading = useSelector(state => state.filter.loading, []);

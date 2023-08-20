@@ -6,6 +6,7 @@ import {
     setIsForest,
     setIsRiver,
     setIsLake,
+    setIsOther,
 } from '../../../features/filter/OptionReducer'
 
 const ItemsToSearch = () => {
@@ -24,6 +25,9 @@ const ItemsToSearch = () => {
     const onChangeLake = (e) => {
         dispatch(setIsLake(e.target.checked));
     };
+    const onChangeOther = (e) => {
+        dispatch(setIsOther(e.target.checked));
+    };
 
     return (
         <>
@@ -31,6 +35,7 @@ const ItemsToSearch = () => {
             <Checkbox onChange={onChangeForest} checked={options.toSearch.isForest}>Forest</Checkbox>
             <Checkbox onChange={onChangeRiver} checked={options.toSearch.isRiver}>River</Checkbox>
             <Checkbox onChange={onChangeLake} checked={options.toSearch.isLake}>Lake</Checkbox>
+            <Checkbox onChange={onChangeOther} checked={options.toSearch.isOther}>Other</Checkbox>
         </>
     );
 }

@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="main-layout">
-    <NavBar />
+    {/* <NavBar /> */}
     <div className="content">
     <Container fluid className="main-container">
       <OptionCard />

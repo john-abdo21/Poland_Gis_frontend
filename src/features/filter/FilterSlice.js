@@ -5,6 +5,7 @@ export const fetchFilter = createAsyncThunk(
   'filter/fetchFilter',
 
   async (filter) => {
+    console.log('filter',filter);
     const response = await FilterApi.post("/api/complexSearch",
       {
         data: filter

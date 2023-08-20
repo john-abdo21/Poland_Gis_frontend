@@ -18,9 +18,12 @@ const Home = () => {
   }, [dispatch]);
   return (
     <Row style={{ height: "100%", width: '100%' }}>
-      <Button type="primary" onClick={setView1} icon={<DownloadOutlined />} loading={loading} className='setting_btn'>
-        {loading ? 'Loading...' : 'DefineData'}
+      <Button type="primary" loading={loading} className='setting_btn'>
+        {loading ? 'Loading...' : 'No Info'}
       </Button>
+      {/* <Button type="primary" onClick={setView1} icon={<DownloadOutlined />} loading={loading} className='setting_btn'>
+        {loading ? 'Loading...' : 'DefineData'}
+      </Button> */}
       <App />
       <MapView />
     </Row>
